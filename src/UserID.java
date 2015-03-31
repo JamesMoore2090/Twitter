@@ -1,19 +1,14 @@
-
-import java.util.*;
-
-
-/*
- * This class creates the user Object.
-
-Other Stuff maybe added later
+/** This is the userID class. This creates userID objects. There are also method 
+ * that create new users and to see if a user is registered.
+ * 
  */
-
 /**
  *
- * @author James
+ * @author James Moore
  */
+import java.util.*;
 public class UserID {
-    
+    // constructor
     public UserID(){
         
     }
@@ -41,23 +36,28 @@ public class UserID {
     public String getEmail(){
         return Email;
     }
-    // there is a problem with this and checking to see if there are two of the same usernames
+    /**
+     * This creates a new user object. It also asks the user all the info for the user.
+     * It also checks to make sure the username is unique.
+     * @param Users
+     * @return ArrayList
+     */
     public ArrayList NewUser(ArrayList Users){
-        // ask the user for information 
-        Scanner userInput = new Scanner(System.in);
-        System.out.println("Please enter a username");
-        UserName = userInput.next();
         UserID user = new UserID();
-        int i = 0;
-        while(i < Users.size()){
+        Scanner userInput = new Scanner(System.in);
+        boolean newUserIsTheSame = true; // while loop controller 
+        int i =0; // counter
+        // this checks to make sure the username is unique.
+        while(newUserIsTheSame){
+            System.out.println("Please enter a username");
+            UserName = userInput.next();
             user = (UserID) Users.get(i);
-            System.out.println("Here");
-            if( UserName.equals(user.getUserName())){
-                System.out.println("This Username is already being used please choose another.");
-                UserName = userInput.next();
-            }
+            if(UserName.equals(user.getUserName())){
+                System.out.println("This username " + UserName+ " is already taken. Please choose another");
+            }// end if
+            else newUserIsTheSame= false;
             i++;
-        }
+        }// end while
         // Name, username, password, and email
         System.out.println("Please enter your password");
         Password = userInput.next();
@@ -65,24 +65,57 @@ public class UserID {
         Name = userInput.next();
         System.out.println("Please enter your email");
         Email = userInput.next();
-        // if not then then create a new userID object
+        // create a new object!
         UserID newUser = new UserID(Name, UserName, Password, Email);
+        // now add it to the ArrayList
         Users.add(newUser);
+        // return the ArrayList
         return Users;
-    }
+    }//end method
     
-    // this will get users login information and check to make sure they are in the list
-    public boolean isRegisteredUser(ArrayList users){
-        return true;
-    }
+    /**
+     * This makes sure the user is registered.
+     * @param Users
+     * @return boolean
+     */
+    public boolean isRegisteredUser(ArrayList Users){
+        boolean isNotRegistered = true;// while loop controller
+        UserID user = new UserID();
+        Scanner userInput = new Scanner(System.in);
+        int i = 0;// cointer
+        System.out.println("Username: ");
+        UserName = userInput.next();
+        System.out.println("Password: ");
+        Password = userInput.next();
+        // Got through the list to see if the username and password match and if they are in the list
+        while(isNotRegistered && i < Users.size()){
+            user = (UserID) Users.get(i);
+            if(UserName.equals(user.getUserName()) && Password.equals(user.getPassword())){
+                isNotRegistered = false; // yes it is in the list. this gets us out of the while loop
+            } // end if
+        i++;
+        }//end while loop
+        // return true if it was found
+        if(!isNotRegistered){
+            return true;
+        }// end if
+        //if not print a message and try again.
+        else{
+            System.out.println("The username and password does not match");
+            return false;
+        }// end else
+        
+    }// end method
+    
 
     @Override
     public String toString() {
-        return "UserID + " + UserName +" " +Password +" "+Name +" "+ Email ;
-    }
+        return "UserID + " + UserName +" " +Password +" "+Name +" "+ Email +"\n";
+    }// end method
+    // this is used for printing the info to a file
     public String toStringQuit(){
         return UserName + " " + Password + " " + Name + " " + Email;
-    }
+    }// end method
     
     
     protected String UserName;

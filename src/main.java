@@ -21,17 +21,43 @@ public class main {
     public static void main(String[] args) throws FileNotFoundException {
         ArrayList registeredUsers = new ArrayList();
         ArrayList allUser = new ArrayList();
+        ArrayList Users = new ArrayList();
         registeredUsers = new main().loadAllUsers();
         System.out.println(registeredUsers);
+        System.out.println();
         UserID newUser = new UserID();
-        ArrayList Users = newUser.NewUser(registeredUsers);
-        allUser.addAll(Users);
-        allUser.addAll(registeredUsers);
+        boolean menu = true;
         
+        Scanner Choice = new Scanner(System.in);
+        String input;
+        
+        while(menu){
+        
+            System.out.println("Welcome to Bottom Hehe");
+            System.out.println("Are you a new user? Y/N");
+            input = Choice.next();
+            if("Y".equalsIgnoreCase(input)){
+                // create a new user
+                Users = newUser.NewUser(registeredUsers);  
+            }
+            else{
+                if(newUser.isRegisteredUser(registeredUsers)){
+                    System.out.println("Do cool stuff here");
+                }
+            }
+            System.out.println();
+            System.out.println("Do you want to quit? Y/N");
+            input = Choice.next();
+            if("Y".equalsIgnoreCase(input)){
+                //this combinds the two arraylist in to one big.
+                // function call to the close the program
+                new main().userToFile(registeredUsers);
+                menu = false;
+            }
+            
     
-        new main().userToFile(allUser);
+        }
     }
-    
         // This method will load all the users from a file and put them in to a list.
     public ArrayList loadAllUsers() throws FileNotFoundException{
         ArrayList Users = new ArrayList();
