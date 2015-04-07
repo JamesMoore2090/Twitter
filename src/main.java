@@ -48,7 +48,7 @@ public class main {
                 if(newUser.isRegisteredUser(registeredUsers)){
                     System.out.println("Do cool stuff here");
                     
-                    Messages= newPost.NewMessage(allMessages);
+                    //Messages= newPost.NewMessage(allMessages);
                 }
             }
             System.out.println();
