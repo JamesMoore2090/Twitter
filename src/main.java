@@ -20,7 +20,6 @@ public class main {
      */
     public static void main(String[] args) throws FileNotFoundException {
         ArrayList registeredUsers = new ArrayList();
-        ArrayList allUser = new ArrayList();
         ArrayList Users = new ArrayList();
         registeredUsers = new main().loadAllUsers();
         System.out.println(registeredUsers);
@@ -77,6 +76,9 @@ public class main {
             }
        
         }
+       catch (Exception e){
+            System.out.println("Cannot create new inventory to file.");
+        }// end catch
     return Users;
     }
 
