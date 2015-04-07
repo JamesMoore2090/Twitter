@@ -84,6 +84,9 @@ public class main {
             }
        
         }
+       catch (Exception e){
+            System.out.println("Cannot create new inventory to file.");
+        }// end catch
     return Users;
     }
 
