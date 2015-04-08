@@ -38,10 +38,22 @@ public class main {
         Scanner Choice = new Scanner(System.in);
         String input;
         
-        while(menu){
+        //Choose to use gui or to use the console
+        //COMPLETELY FOR DEBUGGING PURPOSES. DELETE AFTER FINAL COMMIT
+        System.out.println("WARNING: IF YOU CHOOSE TO USE GUI, IT IS BUGGY/ NOT FULLY FINISHED. USE THE CONSOLE UNTIL GUI IS COMPLETED");
+        System.out.println("Y/N for GUI: ");
+        
+        Scanner scan = new Scanner(System.in);
+        String in;
+        in = scan.next();
+        if(in.equals("Y")){
             //instantiate gui, set visible
             Loginform login = new Loginform();
             login.setVisible(true);
+        }
+        
+        while(menu){
+
             System.out.println("Welcome to Bottom Hehe");
             System.out.println("Are you a new user? Y/N");
             input = Choice.next();
