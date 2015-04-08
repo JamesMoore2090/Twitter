@@ -1,0 +1,4 @@
+jtwhipple public   Hello im a minion, banana!!!
+jtwhipple public  We have a new movie coming out!
+jtwhipple private  Shhhhh, its a secret, because its a private message!
+jmoore public  hacked your account, for a test

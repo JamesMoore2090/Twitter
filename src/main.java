@@ -20,15 +20,18 @@ public class main {
      */
     public static void main(String[] args) throws FileNotFoundException {
         ArrayList registeredUsers = new ArrayList();
+        ArrayList allMessages= new ArrayList();
         ArrayList allUser = new ArrayList();
         ArrayList Users = new ArrayList();
         
         
         //how to call a function in the main program
         registeredUsers = new main().loadAllUsers();
+        allMessages= new main().loadAllMessages();
         System.out.println(registeredUsers);
         System.out.println();
         UserID newUser = new UserID();
+        Message newPost= new Message();
         boolean menu = true;
         
         Scanner Choice = new Scanner(System.in);
@@ -47,7 +50,15 @@ public class main {
             }
             else{
                 if(newUser.isRegisteredUser(registeredUsers)){
-                    System.out.println("Do cool stuff here");
+                    System.out.println("Would you like to compose a tweet? Y/N");
+                    input= Choice.next();
+                    if("Y".equalsIgnoreCase(input)){
+                        //create new message and add it to list of Messages
+                        String tweetAuthor= newUser.getUserName();
+                        Messages= newPost.NewMessage(allMessages, tweetAuthor);
+                        
+                    }
+                
                 }
             }
             System.out.println();
@@ -57,6 +68,7 @@ public class main {
                 //this combinds the two arraylist in to one big.
                 // function call to the close the program
                 new main().userToFile(registeredUsers);
+                new main().messageToFile(allMessages);
                 menu = false;
             }
             
@@ -82,6 +94,9 @@ public class main {
             }
        
         }
+       catch (Exception e){
+            System.out.println("Cannot create new inventory to file.");
+        }// end catch
     return Users;
     }
 
@@ -96,6 +111,48 @@ public class main {
                 fFile = (UserID) Users.get(i);
                 output.write(fFile.toStringQuit());
                 if(i < Users.size()-1){
+                    output.newLine();
+                }
+            }
+            output.close();
+        }
+        catch (Exception e){
+            System.out.println("Cannot create new inventory to file.");
+        }// end catch
+    }
+    
+    
+        // This method will load all the messages from a file and put them in to a list.
+    public ArrayList loadAllMessages() throws FileNotFoundException{
+        ArrayList Messages = new ArrayList();
+        String Author;
+        String Privacy;
+        String Contents;
+        FileReader F = new FileReader("Messages.txt");
+        try(Scanner S = new Scanner(F)){
+            while(S.hasNextLine()){
+                Author = S.next();
+                Privacy = S.next();
+                Contents = S.nextLine();
+                Message tweet = new Message(Author, Privacy, Contents);
+                Messages.add(tweet);
+            }
+       
+        }
+    return Messages;
+    }
+
+    public void messageToFile(ArrayList Messages){
+        File F = new File("Messages.txt");
+        F.delete();
+        try{
+            FileWriter FW = new FileWriter("Messages.txt");
+            BufferedWriter output = new BufferedWriter(FW);
+            Message fFile = new Message();
+            for(int i = 0; i < Messages.size(); i++){
+                fFile = (Message) Messages.get(i);
+                output.write(fFile.toStringQuit());
+                if(i < Messages.size()-1){
                     output.newLine();
                 }
             }
