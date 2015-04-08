@@ -1,3 +1,13 @@
+
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileWriter;
+import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -13,7 +23,7 @@ public class Loginform extends javax.swing.JFrame {
     /**
      * Creates new form Loginform
      */
-    public Loginform() {
+    public Loginform(){
         initComponents();
     }
 
@@ -55,6 +65,8 @@ public class Loginform extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         newEmail = new javax.swing.JTextField();
         newLogin = new javax.swing.JButton();
+        newName = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
 
         jTextField2.setText("jTextField2");
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
@@ -85,6 +97,7 @@ public class Loginform extends javax.swing.JFrame {
         jLabel6.setText("jLabel6");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(255, 255, 255));
 
         password.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -99,6 +112,11 @@ public class Loginform extends javax.swing.JFrame {
         });
 
         loginButton.setText("Login");
+        loginButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                loginButtonActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("Username");
 
@@ -127,61 +145,70 @@ public class Loginform extends javax.swing.JFrame {
         });
 
         newLogin.setText("Create Login");
+        newLogin.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                newLoginActionPerformed(evt);
+            }
+        });
+
+        jLabel11.setText("New Name");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel7))
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                .addComponent(jLabel5)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel7))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel1)
                                             .addGroup(layout.createSequentialGroup()
-                                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jLabel1)
-                                                    .addGroup(layout.createSequentialGroup()
-                                                        .addComponent(jLabel2)
-                                                        .addGap(80, 80, 80)
-                                                        .addComponent(loginButton)))
-                                                .addGap(685, 685, 685))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                                .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                                        .addComponent(newLogin)
-                                        .addGap(40, 40, 40))
+                                                .addComponent(jLabel2)
+                                                .addGap(80, 80, 80)
+                                                .addComponent(loginButton)))
+                                        .addGap(685, 685, 685))
                                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                                        .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addComponent(password, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jLabel8)
-                                    .addComponent(newUsername, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
-                                    .addComponent(jLabel9)
-                                    .addComponent(newPassword)
-                                    .addComponent(jLabel10)
-                                    .addComponent(newEmail)))))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(510, 510, 510)
-                        .addComponent(jLabel4)))
+                                .addComponent(newLogin)
+                                .addGap(40, 40, 40))
+                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                                .addComponent(username, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jLabel8)
+                            .addComponent(newUsername, javax.swing.GroupLayout.DEFAULT_SIZE, 98, Short.MAX_VALUE)
+                            .addComponent(jLabel9)
+                            .addComponent(newPassword)
+                            .addComponent(jLabel10)
+                            .addComponent(newEmail)
+                            .addComponent(jLabel11)
+                            .addComponent(newName))))
                 .addContainerGap())
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addGap(57, 57, 57))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addGap(463, 463, 463))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(jLabel4)
-                .addGap(46, 46, 46)
+                .addGap(35, 35, 35)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jLabel7))
@@ -211,7 +238,11 @@ public class Loginform extends javax.swing.JFrame {
                 .addComponent(jLabel10)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(newEmail, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 275, Short.MAX_VALUE)
+                .addGap(28, 28, 28)
+                .addComponent(jLabel11)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(newName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 202, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addGap(122, 122, 122))
         );
@@ -225,6 +256,7 @@ public class Loginform extends javax.swing.JFrame {
 
     private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
         // TODO add your handling code here:
+        //all we do here is get what is entered by the user
     }//GEN-LAST:event_jTextField4ActionPerformed
 
     private void passwordActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_passwordActionPerformed
@@ -239,6 +271,102 @@ public class Loginform extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_newEmailActionPerformed
 
+    private void loginButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_loginButtonActionPerformed
+        try{
+            //get the array list and the list of users ready
+            ArrayList registeredUsers = new ArrayList();
+            ArrayList allMessages= new ArrayList();
+            ArrayList allUser = new ArrayList();
+            ArrayList Users = new ArrayList();
+            ArrayList Messages= new ArrayList();
+        
+        
+            //how to call a function in the main program
+            registeredUsers = new main().loadAllUsers();
+            allMessages= new main().loadAllMessages();
+            
+            //get the username and password
+            String name = username.getText();
+            char[] pwd = password.getPassword();
+            String passw = new String(pwd);
+            
+            //search through the list to see if this is in there
+            UserID user = new UserID();
+            
+            if(user.isRegUser(registeredUsers, name, passw)){
+                JOptionPane.showMessageDialog(null, "This person exists. Logged in!","Notification"
+                        , JOptionPane.PLAIN_MESSAGE);
+                
+            }else{
+                JOptionPane.showMessageDialog(null, "This person does not exist, or the password is wrong.","Error", JOptionPane.ERROR_MESSAGE);
+            }
+            
+        }catch(Exception e){
+            System.out.println(e.getMessage());
+        }
+    }//GEN-LAST:event_loginButtonActionPerformed
+
+    private void newLoginActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newLoginActionPerformed
+        
+        try{
+            //load all the users
+            ArrayList registeredUsers = new ArrayList();
+            ArrayList allMessages= new ArrayList();
+            ArrayList allUser = new ArrayList();
+            ArrayList Users = new ArrayList();
+            ArrayList Messages= new ArrayList();
+            //load the file
+            registeredUsers = new main().loadAllUsers();
+            
+            //get the text from the user
+            String uname = newUsername.getText();
+            char[] pwd = newPassword.getPassword();
+            String pass = new String(pwd);
+            String name = newName.getText();
+            String email = newEmail.getText();
+            
+            //now create a UserID object with these charactertics
+            UserID newUser = new UserID(name, uname, pass, email);
+            
+            //now, check to see if this user is already in the array list
+            boolean flag = false;
+            for(int i = 0; i < registeredUsers.size() && flag == false; i++){
+                UserID temp = (UserID) registeredUsers.get(i);
+                if(temp.getUserName().equals(newUser.getUserName())){
+                    //alert user that this name is in the system
+                    flag = true;
+                    
+                }else{
+                    //leave flag as it is. alert user that this name is not in the system
+                   
+                }
+            }
+            
+            if(flag == true){
+                JOptionPane.showMessageDialog(null, "This username is already in the system, try again", "ERROR", JOptionPane.ERROR_MESSAGE);
+            }else{
+                //alert the user
+                JOptionPane.showMessageDialog(null, "Account Created", "Success", JOptionPane.PLAIN_MESSAGE);
+                //now add this new user to the file to make permanent
+                registeredUsers.add(newUser);
+                userToFile(registeredUsers);
+                
+                
+            }
+            
+            
+            
+        //create a new account for a user
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Loginform.class.getName()).log(Level.SEVERE, null, ex);
+            
+        }
+        
+        
+        
+        
+    }//GEN-LAST:event_newLoginActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -250,7 +378,7 @@ public class Loginform extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows*".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -274,9 +402,30 @@ public class Loginform extends javax.swing.JFrame {
         });
     }
 
+        public void userToFile(ArrayList Users){
+        File F = new File("Users.txt");
+        F.delete();
+        try{
+            FileWriter FW = new FileWriter("Users.txt");
+            BufferedWriter output = new BufferedWriter(FW);
+            UserID fFile = new UserID();
+            for(int i = 0; i < Users.size(); i++){
+                fFile = (UserID) Users.get(i);
+                output.write(fFile.toStringQuit());
+                if(i < Users.size()-1){
+                    output.newLine();
+                }
+            }
+            output.close();
+        }
+        catch (Exception e){
+            System.out.println("Cannot create new inventory to file.");
+        }// end catch
+    }
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -300,9 +449,11 @@ public class Loginform extends javax.swing.JFrame {
     private javax.swing.JButton loginButton;
     private javax.swing.JTextField newEmail;
     private javax.swing.JButton newLogin;
+    private javax.swing.JTextField newName;
     private javax.swing.JPasswordField newPassword;
     private javax.swing.JTextField newUsername;
     private javax.swing.JPasswordField password;
     private javax.swing.JTextField username;
     // End of variables declaration//GEN-END:variables
 }
+
