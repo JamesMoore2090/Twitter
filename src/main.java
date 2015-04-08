@@ -36,7 +36,16 @@ public class main {
         String input;
         
         while(menu){
-        
+            int i=0;
+            while(i< allMessages.size()){
+               Message currentMessage= new Message();
+                currentMessage= (Message) allMessages.get(i);
+                String currentPrivacy= currentMessage.getPrivacy();
+                if(currentPrivacy.equals("public")){
+                    currentMessage.printMessage();
+                }
+                i++;
+            }
             System.out.println("Welcome to Bottom Hehe");
             System.out.println("Are you a new user? Y/N");
             input = Choice.next();
@@ -46,9 +55,15 @@ public class main {
             }
             else{
                 if(newUser.isRegisteredUser(registeredUsers)){
-                    System.out.println("Do cool stuff here");
-                    
-                    //Messages= newPost.NewMessage(allMessages);
+                    System.out.println("Would you like to compose a tweet? Y/N");
+                    input= Choice.next();
+                    if("Y".equalsIgnoreCase(input)){
+                        //create new message and add it to list of Messages
+                        String tweetAuthor= newUser.getUserName();
+                        Messages= newPost.NewMessage(allMessages, tweetAuthor);
+                        
+                    }
+                
                 }
             }
             System.out.println();
@@ -115,14 +130,16 @@ public class main {
         // This method will load all the messages from a file and put them in to a list.
     public ArrayList loadAllMessages() throws FileNotFoundException{
         ArrayList Messages = new ArrayList();
+        String Author;
         String Privacy;
         String Contents;
         FileReader F = new FileReader("Messages.txt");
         try(Scanner S = new Scanner(F)){
             while(S.hasNextLine()){
+                Author = S.next();
                 Privacy = S.next();
-                Contents = S.next();
-                Message tweet = new Message(Privacy, Contents);
+                Contents = S.nextLine();
+                Message tweet = new Message(Author, Privacy, Contents);
                 Messages.add(tweet);
             }
        
