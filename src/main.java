@@ -22,6 +22,9 @@ public class main {
         ArrayList registeredUsers = new ArrayList();
         ArrayList allUser = new ArrayList();
         ArrayList Users = new ArrayList();
+        
+        
+        //how to call a function in the main program
         registeredUsers = new main().loadAllUsers();
         System.out.println(registeredUsers);
         System.out.println();
@@ -32,7 +35,9 @@ public class main {
         String input;
         
         while(menu){
-        
+            //instantiate gui, set visible
+            Loginform login = new Loginform();
+            login.setVisible(true);
             System.out.println("Welcome to Bottom Hehe");
             System.out.println("Are you a new user? Y/N");
             input = Choice.next();
