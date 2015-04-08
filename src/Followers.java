@@ -40,7 +40,7 @@ public class Followers {
     public String toStringQuit(){
         String NewUsers = null;
         for(int i = 0; i < UserFollows.size(); i++){
-             NewUsers =  User + " " + UserFollows.get(i) + '\n';
+            // NewUsers =  User + " " + UserFollows.get(i) + '\n';
         }
         return NewUsers;
     }
