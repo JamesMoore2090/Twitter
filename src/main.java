@@ -23,6 +23,7 @@ public class main {
         ArrayList allMessages= new ArrayList();
         ArrayList allUser = new ArrayList();
         ArrayList Users = new ArrayList();
+        ArrayList Messages= new ArrayList();
         
         
         //how to call a function in the main program
