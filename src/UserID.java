@@ -73,6 +73,30 @@ public class UserID {
         return Users;
     }//end method
     
+    
+    //cant have input from console from any method. Will not work with gui
+    public ArrayList NewUser(ArrayList Users, String UserName, String passData, String nameData, String emailData){
+        UserID user = new UserID();
+        boolean newUserIsTheSame = true;
+        int i = 0;
+        while(newUserIsTheSame){
+            user = (UserID) Users.get(i);
+            if(UserName.equals(user.getUserName())){
+                
+            }else{
+                newUserIsTheSame = false;
+                i++;
+            }
+        }
+        Password = passData;
+        Name = nameData;
+        Email = emailData;
+        UserID newUser = new UserID(Name, UserName, Password, Email);
+        Users.add(newUser);
+        return Users; 
+                
+    }
+    
     /**
      * This makes sure the user is registered.
      * @param Users
