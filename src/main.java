@@ -42,6 +42,16 @@ public class main {
             //instantiate gui, set visible
             Loginform login = new Loginform();
             login.setVisible(true);
+            int i=0;
+            while(i< allMessages.size()){
+               Message currentMessage= new Message();
+                currentMessage= (Message) allMessages.get(i);
+                String currentPrivacy= currentMessage.getPrivacy();
+                if(currentPrivacy.equals("public")){
+                    currentMessage.printMessage();
+                }
+                i++;
+            }
             System.out.println("Welcome to Bottom Hehe");
             System.out.println("Are you a new user? Y/N");
             input = Choice.next();
