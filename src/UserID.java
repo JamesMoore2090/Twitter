@@ -8,6 +8,8 @@
  */
 import java.util.*;
 public class UserID {
+    public static UserID currUser = new UserID();
+    
     // constructor
     public UserID(){
         
