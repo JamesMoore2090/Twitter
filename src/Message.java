@@ -19,7 +19,7 @@ public class Message {
     }
     
     //Constructor to create new message
-    public Message(String postAuthor, String postPrivacy, String messagePost){
+    public Message(String postAuthor, boolean postPrivacy, String messagePost){
         Author= postAuthor;
         Privacy= postPrivacy;
         Contents= messagePost;
@@ -29,7 +29,7 @@ public class Message {
         return Author;
     }
     
-    public String getPrivacy(){
+    public boolean getPrivacy(){
         return Privacy;
     }
     
@@ -47,9 +47,19 @@ public class Message {
         Message post= new Message();
         Scanner input=  new Scanner(System.in);
         input.useDelimiter("\\n");
-        System.out.println("Would you like this Tweet to be public or private?");
-        Privacy= input.next();
+        System.out.println("Would you like this Tweet to be private? Y/N");
+        String choice;
+        choice= input.next();
+        if("Y".equalsIgnoreCase(choice)){
+            Privacy= true;
+        }
+        else{
+            Privacy= false;
+        }
         System.out.println("Please enter your tweet: ");
+        if(input.next().length()> 140){
+            System.out.println("Tweet too long please enter another tweet: ");
+        }
         Contents= input.next();
         Author= tweetAuthor;
         //Create new message object
@@ -72,7 +82,7 @@ public class Message {
     }// end method
     
     //Data Members
-    protected String Privacy;
+    protected boolean Privacy;
     protected String Contents;
     protected String Author;
 }

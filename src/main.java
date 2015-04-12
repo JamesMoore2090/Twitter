@@ -60,8 +60,8 @@ public class main {
         while(i< allMessages.size()){
             Message currentMessage= new Message();
             currentMessage= (Message) allMessages.get(i);
-            String currentPrivacy= currentMessage.getPrivacy();
-            if(currentPrivacy.equals("public")){
+            boolean currentPrivacy= currentMessage.getPrivacy();
+            if(currentPrivacy== false){
                 currentMessage.printMessage();
             }
             i++;
@@ -155,13 +155,13 @@ public class main {
     public ArrayList loadAllMessages() throws FileNotFoundException{
         ArrayList Messages = new ArrayList();
         String Author;
-        String Privacy;
+        boolean Privacy;
         String Contents;
         FileReader F = new FileReader("Messages.txt");
         try(Scanner S = new Scanner(F)){
             while(S.hasNextLine()){
                 Author = S.next();
-                Privacy = S.next();
+                Privacy = S.nextBoolean();
                 Contents = S.nextLine();
                 Message tweet = new Message(Author, Privacy, Contents);
                 Messages.add(tweet);
