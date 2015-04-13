@@ -1,6 +1,5 @@
-jtwhipple public                              Hello im a minion, banana!!!
-jtwhipple public                             We have a new movie coming out!
-jtwhipple private                             Shhhhh, its a secret, because its a private message!
-jmoore public                             hacked your account, for a test
-jtwhipple public                           hello im a minion
-jtwhipple public                           hey is this coming out private?
+jtwhipple false  I want the whole world to see this tweet
+jtwhipple true  This tweet is a secret shhhh!
+jmoore false  haha im james
+Kyle false  bob saget quit hacking my account!
+jtwhipple false This is the alternate tweet
