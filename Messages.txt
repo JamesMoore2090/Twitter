@@ -1,5 +1,11 @@
-jtwhipple true  true  true  true  true  true  true  false  I want the whole world to see this tweet
-jtwhipple true  true  true  true  true  true  true  true  This tweet is a secret shhhh!
-jmoore true  true  true  true  true  true  true  false  haha im james
-Kyle true  true  true  true  true  true  true  false  bob saget quit hacking my account!
-jtwhipple true  true  true  true  true  true  true  false This is the alternate tweet
+jtwhipple false   I want the whole world to see this tweet
+jtwhipple true   This tweet is a secret shhhh!
+jmoore false   haha im james
+Kyle false    bob saget quit hacking my account!
+jtwhipple false    This is the alternate tweet
+jtwhipple false    Hey i had to enter another tweet
+jtwhipple false     Hey is this fixed yet, I tired of messing with this
+jtwhipple false    We have a big evil mission coming up!
+jtwhipple false    Hey this is the replacement tweet
+jtwhipple true  Checking to see if our tweets are still secret...
+jtwhipple false  Hey can everyone see this?

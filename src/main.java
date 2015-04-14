@@ -64,15 +64,6 @@ public class main {
             if(currentPrivacy== false){
                 currentMessage.printMessage();
             }
-
-        int i = 0;
-        while (i < allMessages.size()) {
-            Message currentMessage = new Message();
-            currentMessage = (Message) allMessages.get(i);
-            /*String currentPrivacy= currentMessage.getPrivacy();
-             if(currentPrivacy.equals("public")){
-             currentMessage.printMessage();
-             }*/
             i++;
         }
 
