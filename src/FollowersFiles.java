@@ -25,8 +25,8 @@ public class FollowersFiles {
             user = S.next();
             while(S.hasNextLine()){
                 Followers = S.next();
-                Followers userFollows = new Followers(user, Followers);
-                userIsFollowing.add(userFollows);
+               //Followers userFollows = new Followers(user, Followers);
+                //userIsFollowing.add(userFollows);
             }
        
         }
