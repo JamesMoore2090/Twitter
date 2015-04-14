@@ -51,6 +51,9 @@ public class main {
             Loginform login = new Loginform();
             login.setVisible(true);
             
+            Menu menuform = new Menu();
+            //menuform.setVisible(true);
+            
             //get the username and the password from an existing user
             
             
@@ -104,6 +107,10 @@ public class main {
     
         }
     }
+    
+    //END MAIN
+    
+    
         // This method will load all the users from a file and put them in to a list.
     public ArrayList loadAllUsers() throws FileNotFoundException{
         ArrayList Users = new ArrayList();
