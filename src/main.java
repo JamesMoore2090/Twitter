@@ -49,9 +49,21 @@ public class main {
             //instantiate gui, set visible
             Loginform login = new Loginform();
             login.setVisible(true);
-
+            
+            Menu menuform = new Menu();
+            //menuform.setVisible(true);
+            
             //get the username and the password from an existing user
         }
+        
+        int i=0;
+        while(i< allMessages.size()){
+            Message currentMessage= new Message();
+            currentMessage= (Message) allMessages.get(i);
+            boolean currentPrivacy= currentMessage.getPrivacy();
+            if(currentPrivacy== false){
+                currentMessage.printMessage();
+            }
 
         int i = 0;
         while (i < allMessages.size()) {
@@ -144,10 +156,12 @@ public class main {
 
         }
     }
-
-    // This method will load all the users from a file and put them in to a list.
-
-    public ArrayList loadAllUsers() throws FileNotFoundException {
+    
+    //END MAIN
+    
+    
+        // This method will load all the users from a file and put them in to a list.
+    public ArrayList loadAllUsers() throws FileNotFoundException{
         ArrayList Users = new ArrayList();
         String UserName;
         String Password;
@@ -194,13 +208,13 @@ public class main {
     public ArrayList loadAllMessages() throws FileNotFoundException {
         ArrayList Messages = new ArrayList();
         String Author;
-        Boolean Privacy;
+        boolean Privacy;
         String Contents;
         FileReader F = new FileReader("Messages.txt");
         try (Scanner S = new Scanner(F)) {
             while (S.hasNextLine()) {
                 Author = S.next();
-                Privacy = S.hasNextBoolean();
+                Privacy = S.nextBoolean();
                 Contents = S.nextLine();
                 Message tweet = new Message(Author, Privacy, Contents);
                 Messages.add(tweet);
