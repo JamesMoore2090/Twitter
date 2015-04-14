@@ -13,52 +13,55 @@ import java.util.*
  * @author James
  */
 public class Followers {
-     protected ArrayList followersList = new ArrayList();
-     protected String User;
-     protected String follower;
-     private String combo;
-     protected ArrayList<String> UserFollows = new ArrayList();
+     
+
 
     // constructor
     public Followers(){
         
     }
      
-     public Followers(String newFollower){
-            //User = user;
-            follower = newFollower;
-            //UserFollows.add(user);
-            UserFollows.add(newFollower);
-        
-        
+     public Followers(String user, String newFollower){
+            User = user;
+            follower = newFollower;  
     }
-    
-    
-    public String getUser(){
-        return User;
-    }
-    
-    public ArrayList getList(){
-        return UserFollows;
-    }
-    
-    public String getFollower(int i){
-        String Follower = UserFollows.get(i);
-        return Follower;
-    }
-    
-    public void seeFollowers(String userName, ArrayList Followers){
-        
-        Followers follower = new Followers();
-        
-        //System.out.println(Followers.get(0));
-       // System.out.println(follower.toString() + " here");
-        for(int i = 1; i < Followers.size(); i++){
-            follower = (Followers) Followers.get(i);
-            if(userName.equals(follower.getFollower(i))){
-                System.out.println(follower.toString());
+
+    public String newFollower(String User, ArrayList Users) {
+        UserID followUser = new UserID();
+        Scanner whoToFollow = new Scanner(System.in);
+        String input;
+        for (int a = 0; a < Users.size(); a++) {
+            followUser = (UserID) Users.get(a);
+            if (!User.equals(followUser.getUserName())) {
+                    System.out.println(followUser.UserName);
             }
+
         }
+        System.out.println("Who would you like to follow?");
+        input = whoToFollow.next();
+        return input;
+    }
+     
+    
+     public String getFollower(){
+         return follower;
+     }
+    
+     public int compareTo(Followers other) {
+        return this.User.compareTo(other.User);
+    }// end method
+     
+    public void seeFollowers(String userName){
+        if(userName.equals(User)){
+            System.out.println(follower);
+        }
+    }
+    
+    public String whoAmIfollowing(String userName){
+        if(userName.equals(User)){
+            return follower;
+        }
+        else return null;
     }
     
     public void randomFollower(){
@@ -72,7 +75,9 @@ public class Followers {
     
     public String toStringQuit(){
         
-        return follower;
+        return User + " " + follower;
     }
     
+    protected String User;
+    protected String follower;
 }
