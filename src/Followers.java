@@ -53,7 +53,7 @@ public class Followers {
             followUser = (UserID) Users.get(a);
             if (c < follows.size()) {
                 foll = (String) follows.get(c);
-                if ((!User.equals(followUser.UserName) && (!foll.equals(followUser.UserName)))) {
+                if ((!followUser.getUserName().equals(User) && (!followUser.getUserName().equals(foll)))) {
                     System.out.println(followUser.UserName);
                 }// end if
                 c++;
@@ -93,11 +93,20 @@ public class Followers {
     public String whoAmIfollowing(String userName) {
         if (userName.equals(User)) {
             return follower;
-        }
-        else return "You have no followers";
-    }
-    
-    public void randomFollower(){
+        }// end if 
+        else {
+            return null;
+        }// end else
+    } // end method
+
+    /**
+     * This gets a random user to send to the main so you can follow them.
+     * @param userName
+     * @param user
+     * @param follows
+     * @return a string
+     */
+    public String randomFollower(String userName, ArrayList user, ArrayList follows) {
         // suggest a random follower from the registered users list
         UserID followUser = new UserID();
         String foll;
@@ -115,7 +124,7 @@ public class Followers {
             followUser = (UserID) user.get(a);
             if (c < follows.size()) {
                 foll = (String) follows.get(c);
-                if ((!userName.equals(ranUser.UserName) && (!foll.equals(ranUser.UserName)))) {
+                if ((!userName.equals(ranUser.getUserName()) && (!foll.equals(ranUser.getUserName())))) {
                     // return if you get here
                     return ranUser.getUserName();
                 }// end if
