@@ -80,6 +80,13 @@ public class Message {
         System.out.println( Author + ": "+ "\n" + Contents + "\n");
     }
     
+    
+    @Override
+    public String toString(){
+        return Author + ": " + "\n" + Contents;
+        
+    }
+    
     // this is used for printing the info to a file
     public String toStringQuit(){
         return Author + " " +Privacy + " " + Contents;
