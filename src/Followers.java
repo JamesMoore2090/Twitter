@@ -61,7 +61,7 @@ public class Followers {
         if(userName.equals(User)){
             return follower;
         }
-        else return null;
+        else return "You have no followers";
     }
     
     public void randomFollower(){

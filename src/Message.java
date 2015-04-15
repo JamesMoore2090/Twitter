@@ -80,6 +80,7 @@ public class Message {
         System.out.println( Author + ": "+ "\n" + Contents + "\n");
     }
     
+    
     // this is used for printing the info to a file
     public String toStringQuit(){
         return Author + " " +Privacy + " " + Contents;

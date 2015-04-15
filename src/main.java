@@ -80,6 +80,8 @@ public class main {
                 if (newUser.isRegisteredUser(registeredUsers)) {
                     System.out.println("Would you like to compose a tweet? T");
                     System.out.println("See or add followers? F");
+                    System.out.println("View your timeline? V");
+                    System.out.println("Search tweets by hashtag? H");
                     input = Choice.next();
                     if ("T".equalsIgnoreCase(input)) {
                         //create new message and add it to list of Messages
@@ -130,6 +132,44 @@ public class main {
                                 followerMenu = false;
                             }
                         }// end while
+                    }
+                    
+                    if("V".equalsIgnoreCase(input)){
+                        Followers = new main().loadFollowers();
+                        String currentUser = newUser.getUserName();
+                        Followers userSubscribers= new Followers();
+                        for (int a = 0; a < Followers.size(); a++) {
+                            userSubscribers = (Followers) Followers.get(a);
+                         String currentFollower= userSubscribers.whoAmIfollowing(currentUser);
+                        int j=0;
+                        while(j< allMessages.size()){
+                        Message currentMessage= new Message();
+                        currentMessage= (Message) allMessages.get(j);
+                        if(currentFollower.equals(currentMessage.getAuthor())){
+                            currentMessage.printMessage();
+                        }
+                        j++;
+                        }
+                        }
+                         
+                    }
+                    
+                    if("H".equalsIgnoreCase(input)){
+                        System.out.println("Please enter the term you wish to search by, include # symbol");
+                        String searchTerm= Choice.next();
+                        int k=0;
+                        while(k< allMessages.size()){
+                        Message currentMessage= new Message();
+                        currentMessage= (Message) allMessages.get(k);
+                        String thisTweet= currentMessage.getContents();
+                        String words[]= thisTweet.split(" ");
+                            for(int index=0; index< words.length; index++){
+                                if(words[index].equals(searchTerm)){
+                                    currentMessage.printMessage();
+                                }
+                            }
+                        k++;    
+                        }
                     }
 
                 }
