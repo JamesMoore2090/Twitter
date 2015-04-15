@@ -92,6 +92,11 @@ public class main {
                         // this loads all the users
                             // Followers is a global ArrayList
                             Followers = new main().loadFollowers();
+                            System.out.println("Befire the sort: " + Followers);
+                            Comparator<Followers> productToComp = new FollowersComparatorByUser();
+                            Collections.sort(Followers,productToComp);
+                            //Collections.sort(Followers);
+                            System.out.println("after the sort : " + Followers);
                             // object
                             Followers newFollower = new Followers();
                             // ArrayList to hold the current users followers.
@@ -102,7 +107,7 @@ public class main {
                             String UserName = Choice.next();
                             // adds the followers to the arraylist
                             theFollowers = newFollower.getFollower(UserName, Followers);
-                            Collections.sort(theFollowers);
+                            
                             while (followerMenu) {
                                 System.out.println("Would you like to see your followers? S");
                                 System.out.println("Would you like to find new followers? N");
