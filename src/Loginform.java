@@ -344,6 +344,7 @@ public class Loginform extends javax.swing.JFrame {
             
             //search through the list to see if this is in there
             UserID user = new UserID();
+            UserID.currUser.setUserName(name);
             
             if(user.isRegUser(registeredUsers, name, passw)){
                 JOptionPane.showMessageDialog(null, "This person exists. Logged in!","Notification"
@@ -382,7 +383,9 @@ public class Loginform extends javax.swing.JFrame {
             //now create a UserID object with these charactertics
             UserID newUser = new UserID(name, uname, pass, email);
             
-            UserID.currUser = newUser;
+            //UserID.currUser = newUser;
+            UserID.currUser.setUserName(uname);
+         
             
             //now, check to see if this user is already in the array list
             boolean flag = false;

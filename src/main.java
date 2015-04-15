@@ -84,8 +84,8 @@ public class main {
             }
             else{
                 if(newUser.isRegisteredUser(registeredUsers)){
-                    System.out.println("Would you like to compose a tweet? T");
-                    System.out.println("See or add followers? F");
+                    System.out.println("Would you like to compose a tweet? T: ");
+                    System.out.println("See or add followers? F: ");
                     input= Choice.next();
                     if("T".equalsIgnoreCase(input)){
                         //create new message and add it to list of Messages

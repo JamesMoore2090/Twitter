@@ -1,5 +1,15 @@
-jtwhipple false  I want the whole world to see this tweet
-jtwhipple true  This tweet is a secret shhhh!
-jmoore false  haha im james
-Kyle false  bob saget quit hacking my account!
-jtwhipple false This is the alternate tweet
+jtwhipple false             I want the whole world to see this tweet
+jtwhipple true             This tweet is a secret shhhh!
+jmoore false             haha im james
+Kyle false             bob saget quit hacking my account!
+jtwhipple false            This is the alternate tweet
+null false           This is a test
+null false          Another test. why wont it recognize the username
+null false         Test. This should work
+null false        Test #1
+null false       Test #2
+null false      Test #3
+noUname false    TestingTestingTesting 
+Ktracy false   Testing for realsies
+Ktracy false  Testing privacy
+Ktracy true Testing for privacy round 2
