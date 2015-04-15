@@ -53,7 +53,7 @@ public class Followers {
             followUser = (UserID) Users.get(a);
             if (c < follows.size()) {
                 foll = (String) follows.get(c);
-                if ((!User.equals(followUser.UserName) && (!foll.equals(followUser.UserName)))) {
+                if ((!followUser.getUserName().equals(User) && (!followUser.getUserName().equals(foll)))) {
                     System.out.println(followUser.UserName);
                 }// end if
                 c++;
@@ -124,7 +124,7 @@ public class Followers {
             followUser = (UserID) user.get(a);
             if (c < follows.size()) {
                 foll = (String) follows.get(c);
-                if ((!userName.equals(ranUser.UserName) && (!foll.equals(ranUser.UserName)))) {
+                if ((!userName.equals(ranUser.getUserName()) && (!foll.equals(ranUser.getUserName())))) {
                     // return if you get here
                     return ranUser.getUserName();
                 }// end if
