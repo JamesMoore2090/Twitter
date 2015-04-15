@@ -75,13 +75,14 @@ public class main {
 
             if ("Y".equalsIgnoreCase(input)) {
                 // create a new user
-                Users = newUser.NewUser(registeredUsers);
-            } else {
-                if (newUser.isRegisteredUser(registeredUsers)) {
-                    System.out.println("Would you like to compose a tweet? T");
-                    System.out.println("See or add followers? F");
-                    input = Choice.next();
-                    if ("T".equalsIgnoreCase(input)) {
+                Users = newUser.NewUser(registeredUsers);  
+            }
+            else{
+                if(newUser.isRegisteredUser(registeredUsers)){
+                    System.out.println("Would you like to compose a tweet? T: ");
+                    System.out.println("See or add followers? F: ");
+                    input= Choice.next();
+                    if("T".equalsIgnoreCase(input)){
                         //create new message and add it to list of Messages
                         String tweetAuthor = newUser.getUserName();
                         Messages = newPost.NewMessage(allMessages, tweetAuthor);

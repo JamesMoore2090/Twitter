@@ -26,6 +26,8 @@ public class Menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jScrollBar1 = new javax.swing.JScrollBar();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         goviewCreateTweet = new javax.swing.JButton();
@@ -33,6 +35,12 @@ public class Menu extends javax.swing.JFrame {
         goviewFollowers = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         viewTweets = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        displayTweets = new javax.swing.JTextArea();
+        updateTweets = new javax.swing.JButton();
+
+        jScrollPane2.setViewportView(jScrollBar1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -61,6 +69,20 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel5.setText("Latest Tweets");
+
+        displayTweets.setColumns(20);
+        displayTweets.setRows(5);
+        jScrollPane1.setViewportView(displayTweets);
+
+        updateTweets.setText("Update");
+        updateTweets.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                updateTweetsActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -77,13 +99,18 @@ public class Menu extends javax.swing.JFrame {
                 .addGap(101, 101, 101)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(goviewFollowers)
-                        .addGap(82, 82, 82)
-                        .addComponent(viewTweets))
-                    .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addGap(77, 77, 77)
-                        .addComponent(jLabel4)))
+                        .addComponent(jLabel4))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(goviewFollowers)
+                        .addGap(82, 82, 82)
+                        .addComponent(viewTweets)))
+                .addGap(297, 297, 297)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5)
+                    .addComponent(updateTweets)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 391, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -91,17 +118,26 @@ public class Menu extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(123, 123, 123)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(goviewCreateTweet)
-                    .addComponent(goviewFollowers)
-                    .addComponent(viewTweets))
-                .addContainerGap(473, Short.MAX_VALUE))
+                .addGap(35, 35, 35)
+                .addComponent(jLabel5)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(goviewCreateTweet)
+                            .addComponent(goviewFollowers)
+                            .addComponent(viewTweets))
+                        .addGap(361, 361, 361))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 458, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)))
+                .addComponent(updateTweets)
+                .addContainerGap(89, Short.MAX_VALUE))
         );
 
         pack();
@@ -120,6 +156,11 @@ public class Menu extends javax.swing.JFrame {
         
         new viewTweets().setVisible(true);
     }//GEN-LAST:event_viewTweetsActionPerformed
+
+    private void updateTweetsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateTweetsActionPerformed
+        
+        
+    }//GEN-LAST:event_updateTweetsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -157,12 +198,18 @@ public class Menu extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JTextArea displayTweets;
     private javax.swing.JButton goviewCreateTweet;
     private javax.swing.JButton goviewFollowers;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JScrollBar jScrollBar1;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JButton updateTweets;
     private javax.swing.JButton viewTweets;
     // End of variables declaration//GEN-END:variables
 }

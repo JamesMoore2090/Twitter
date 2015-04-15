@@ -12,7 +12,11 @@ public class UserID {
     
     // constructor
     public UserID(){
-        
+        Name = "noName";
+        UserName = "noUname";
+        Password = null;
+        Email = null;
+                
     }
 
 // constructor to create the user.
@@ -22,6 +26,7 @@ public class UserID {
         Password = passWord;
         Email = email;
     }
+   
     
     public String getUserName(){
         return UserName;
@@ -38,6 +43,17 @@ public class UserID {
     public String getEmail(){
         return Email;
     }
+    
+    //for gui reasons
+    public void setUserName(String data){
+        UserName = data;
+    }
+    
+    //for gui reasons
+    public void setName(String data){
+        Name = data;
+    }
+    
     /**
      * This creates a new user object. It also asks the user all the info for the user.
      * It also checks to make sure the username is unique.
