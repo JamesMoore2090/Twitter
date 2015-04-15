@@ -55,14 +55,84 @@ public class main {
 
             //get the username and the password from an existing user
         }
-
-        int i = 0;
-        while (i < allMessages.size()) {
-            Message currentMessage = new Message();
-            currentMessage = (Message) allMessages.get(i);
-            boolean currentPrivacy = currentMessage.getPrivacy();
-            if (currentPrivacy == false) {
+        
+        int i=0;
+        while(i< allMessages.size()){
+            Message currentMessage= new Message();
+            currentMessage= (Message) allMessages.get(i);
+            boolean currentPrivacy= currentMessage.getPrivacy();
+            if(currentPrivacy== false){
                 currentMessage.printMessage();
+            }
+            i++;
+        }
+
+        System.out.println("Welcome to Bottom Hehe");
+        System.out.println("Are you a new user? Y/N");
+        input = Choice.next();
+
+        while (menu) {
+
+            if ("Y".equalsIgnoreCase(input)) {
+                // create a new user
+                Users = newUser.NewUser(registeredUsers);
+            } else {
+                if (newUser.isRegisteredUser(registeredUsers)) {
+                    System.out.println("Would you like to compose a tweet? T");
+                    System.out.println("See or add followers? F");
+                    input = Choice.next();
+                    if ("T".equalsIgnoreCase(input)) {
+                        //create new message and add it to list of Messages
+                        String tweetAuthor = newUser.getUserName();
+                        Messages = newPost.NewMessage(allMessages, tweetAuthor);
+
+                    }
+                    if ("F".equalsIgnoreCase(input)) {
+                        Followers = new main().loadFollowers();
+                        Followers newFollower = new Followers();
+                        //Collections.sort(Followers);
+                        boolean followerMenu = true;
+                        while (followerMenu) {
+                            System.out.println("Would you like to see your followers? S");
+                            System.out.println("Would you like to find new followers? N");
+                            System.out.println("Would you like to find a random follower? R");
+                            System.out.println(" Are you finished with the followers? Yes/No");
+                            input = Choice.next();
+                            if ("S".equalsIgnoreCase(input)) {
+                                // for right now I need to ask what the username is.
+                                System.out.println("What is your Username?");
+                                String UserName = Choice.next();
+                                Followers foundFollower = new Followers();
+                                Followers foundFollower2 = new Followers();
+                                for (int a = 0; a < Followers.size(); a++) {
+                                    foundFollower = (Followers) Followers.get(a);
+                                    foundFollower.seeFollowers(UserName);
+
+                                }
+
+                            }// end if
+                            if ("N".equalsIgnoreCase(input)) {
+                                System.out.println("What is your Username?");
+                                String UserName = Choice.next();
+                                System.out.println();
+                                Followers addFollower = new Followers();
+                                String addNewFollower = addFollower.newFollower(UserName, registeredUsers);
+                                Followers newFollows = new Followers(UserName, addNewFollower);
+                                Followers.add(newFollows);
+                                new main().FollowersToFile(Followers);
+
+                            }
+                            if ("R".equalsIgnoreCase(input)) {
+
+                            }
+                            if ("Yes".equalsIgnoreCase(input)) {
+                                new main().FollowersToFile(Followers);
+                                followerMenu = false;
+                            }
+                        }// end while
+                    }
+
+                }
             }
 
             System.out.println("Welcome to Bottom Hehe");
