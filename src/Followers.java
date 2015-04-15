@@ -30,6 +30,10 @@ public class Followers {
         follower = newFollower;
     }// end non default constructor
    
+    public int compareTo(Followers other) {
+        return this.User.compareTo(other.User);
+    }// end method
+    
     /**
      * This prints the list of users then returns a new user to the main.
      * @param User
@@ -70,7 +74,6 @@ public class Followers {
     public ArrayList getFollower(String userName, ArrayList follows) {
         Followers foundFollower = new Followers();
         ArrayList followerList = new ArrayList();
-        System.out.println(follows.size());
         for (int a = 0; a < follows.size(); a++) {
             foundFollower = (Followers) follows.get(a);
             // method call
