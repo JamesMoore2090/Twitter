@@ -57,10 +57,14 @@ public class Message {
             Privacy= false;
         }
         System.out.println("Please enter your tweet: ");
-        if(input.next().length()> 140){
+        String lengthcheck= input.next();
+        if(lengthcheck.length()> 140){
             System.out.println("Tweet too long please enter another tweet: ");
+            Contents= input.next();
         }
-        Contents= input.next();
+        else{
+            Contents= lengthcheck;
+        }
         Author= tweetAuthor;
         //Create new message object
         Message newMessage= new Message(Author, Privacy, Contents);
