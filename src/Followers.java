@@ -30,14 +30,10 @@ public class Followers {
         follower = newFollower;
     }// end non default constructor
    
-    //public int compareTo(Followers other) {
-      //  return this.User.compareTo(other.User);
-   // }// end method
+    public int compareTo(Followers other) {
+        return this.User.compareTo(other.User);
+    }// end method
     
-    
-    public String getUser(){
-        return User;
-    }
     /**
      * This prints the list of users then returns a new user to the main.
      * @param User
@@ -55,17 +51,12 @@ public class Followers {
         while (a < Users.size()) {
             c = 0;
             followUser = (UserID) Users.get(a);
-            while (c < follows.size()) {
+            if (c < follows.size()) {
                 foll = (String) follows.get(c);
-                System.out.println(followUser.getUserName() + " FollowUserName != User " + User+ " && "
-                        + followUser.getUserName() + " != " + foll + " foll");
                 if ((!followUser.getUserName().equals(User) && (!followUser.getUserName().equals(foll)))) {
-                    c = follows.size();
-                }// end if
-                else{
                     System.out.println(followUser.UserName);
-                    c++;
-                }
+                }// end if
+                c++;
             }// end if
             a++;
         }// end while
