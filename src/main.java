@@ -49,119 +49,126 @@ public class main {
             //instantiate gui, set visible
             Loginform login = new Loginform();
             login.setVisible(true);
-            
+
             Menu menuform = new Menu();
             //menuform.setVisible(true);
-            
+
             //get the username and the password from an existing user
         }
-        
-        int i=0;
-        while(i< allMessages.size()){
-            Message currentMessage= new Message();
-            currentMessage= (Message) allMessages.get(i);
-            boolean currentPrivacy= currentMessage.getPrivacy();
-            if(currentPrivacy== false){
-                currentMessage.printMessage();
-            }
 
         int i = 0;
         while (i < allMessages.size()) {
             Message currentMessage = new Message();
             currentMessage = (Message) allMessages.get(i);
-            /*String currentPrivacy= currentMessage.getPrivacy();
-             if(currentPrivacy.equals("public")){
-             currentMessage.printMessage();
-             }*/
-            i++;
-        }
-
-        System.out.println("Welcome to Bottom Hehe");
-        System.out.println("Are you a new user? Y/N");
-        input = Choice.next();
-
-        while (menu) {
-
-            if ("Y".equalsIgnoreCase(input)) {
-                // create a new user
-                Users = newUser.NewUser(registeredUsers);
-            } else {
-                if (newUser.isRegisteredUser(registeredUsers)) {
-                    System.out.println("Would you like to compose a tweet? T");
-                    System.out.println("See or add followers? F");
-                    input = Choice.next();
-                    if ("T".equalsIgnoreCase(input)) {
-                        //create new message and add it to list of Messages
-                        String tweetAuthor = newUser.getUserName();
-                        Messages = newPost.NewMessage(allMessages, tweetAuthor);
-
-                    }
-                    if ("F".equalsIgnoreCase(input)) {
-                        Followers = new main().loadFollowers();
-                        Followers newFollower = new Followers();
-                        //Collections.sort(Followers);
-                        boolean followerMenu = true;
-                        while (followerMenu) {
-                            System.out.println("Would you like to see your followers? S");
-                            System.out.println("Would you like to find new followers? N");
-                            System.out.println("Would you like to find a random follower? R");
-                            System.out.println(" Are you finished with the followers? Yes/No");
-                            input = Choice.next();
-                            if ("S".equalsIgnoreCase(input)) {
-                                // for right now I need to ask what the username is.
-                                System.out.println("What is your Username?");
-                                String UserName = Choice.next();
-                                Followers foundFollower = new Followers();
-                                Followers foundFollower2 = new Followers();
-                                for (int a = 0; a < Followers.size(); a++) {
-                                    foundFollower = (Followers) Followers.get(a);
-                                    foundFollower.seeFollowers(UserName);
-
-                                }
-
-                            }// end if
-                            if ("N".equalsIgnoreCase(input)) {
-                                System.out.println("What is your Username?");
-                                String UserName = Choice.next();
-                                System.out.println();
-                                Followers addFollower = new Followers();
-                                String addNewFollower = addFollower.newFollower(UserName, registeredUsers);
-                                Followers newFollows = new Followers(UserName, addNewFollower);
-                                Followers.add(newFollows);
-                                new main().FollowersToFile(Followers);
-
-                            }
-                            if ("R".equalsIgnoreCase(input)) {
-
-                            }
-                            if ("Yes".equalsIgnoreCase(input)) {
-                                new main().FollowersToFile(Followers);
-                                followerMenu = false;
-                            }
-                        }// end while
-                    }
-
-                }
+            boolean currentPrivacy = currentMessage.getPrivacy();
+            if (currentPrivacy == false) {
+                currentMessage.printMessage();
             }
-            System.out.println();
-            System.out.println("Do you want to quit? Y/N");
+
+            System.out.println("Welcome to Bottom Hehe");
+            System.out.println("Are you a new user? Y/N");
             input = Choice.next();
-            if ("Y".equalsIgnoreCase(input)) {
-                //this combinds the two arraylist in to one big.
-                // function call to the close the program
-                new main().userToFile(registeredUsers);
-                new main().messageToFile(allMessages);
-                menu = false;
-            }
 
-        }
-    }
-    
-    //END MAIN
-    
-    
+            while (menu) {
+
+                if ("Y".equalsIgnoreCase(input)) {
+                    // create a new user
+                    Users = newUser.NewUser(registeredUsers);
+                } else {
+                    if (newUser.isRegisteredUser(registeredUsers)) {
+                        System.out.println("Would you like to compose a tweet? T");
+                        System.out.println("See or add followers? F");
+                        input = Choice.next();
+                        if ("T".equalsIgnoreCase(input)) {
+                            //create new message and add it to list of Messages
+                            String tweetAuthor = newUser.getUserName();
+                            Messages = newPost.NewMessage(allMessages, tweetAuthor);
+
+                        }
+                        if ("F".equalsIgnoreCase(input)) {
+                        // this loads all the users
+                            // Followers is a global ArrayList
+                            Followers = new main().loadFollowers();
+                            // object
+                            Followers newFollower = new Followers();
+                            // ArrayList to hold the current users followers.
+                            ArrayList theFollowers = new ArrayList();
+                            // menu control
+                            boolean followerMenu = true;
+                            System.out.println("What is your Username?");
+                            String UserName = Choice.next();
+                            // adds the followers to the arraylist
+                            theFollowers = newFollower.getFollower(UserName, Followers);
+                            while (followerMenu) {
+                                System.out.println("Would you like to see your followers? S");
+                                System.out.println("Would you like to find new followers? N");
+                                System.out.println("Would you like to find a random follower? R");
+                                System.out.println(" Are you finished with the followers? Yes/No");
+                                input = Choice.next();
+                                // print all the followers for the current user
+                                if ("S".equalsIgnoreCase(input)) {
+                                    for (int b = 0; b < theFollowers.size(); b++) {
+                                        String foll;
+                                        foll = (String) theFollowers.get(b);
+                                        System.out.println(foll);
+                                    }// end for
+                                }// end if
+                                // to find a new follower
+                                if ("N".equalsIgnoreCase(input)) {
+                                    Followers addFollower = new Followers();
+                                    //method call to newFollower
+                                    String addNewFollower = addFollower.newFollower(UserName, registeredUsers, theFollowers);
+                                    // create new object
+                                    Followers newFollows = new Followers(UserName, addNewFollower);
+                                    // add to arraylist
+                                    Followers.add(newFollows);
+                                    // write new followers to a files
+                                    new main().FollowersToFile(Followers);
+                                }// end if
+                                // find a random follower
+                                if ("R".equalsIgnoreCase(input)) {
+                                    Followers randomFollower = new Followers();
+                                    //method call to get a random follower
+                                    String ranName = randomFollower.randomFollower(UserName, registeredUsers, theFollowers);
+                                    // if the method returns null do it again.
+                                    while (ranName.equals("null")) {
+                                        ranName = randomFollower.randomFollower(UserName, registeredUsers, theFollowers);
+                                    }// end while
+                                    System.out.println("This is the random User: " + ranName);
+                                    System.out.println("Would you like to follow them? Y/N");
+                                    String y_n = Choice.next();
+                                    if ("Y".equalsIgnoreCase(y_n)) {
+                                        // create a new follower add them to the list
+                                        Followers newFollows = new Followers(UserName, ranName);
+                                        Followers.add(newFollows);
+                                        new main().FollowersToFile(Followers);
+                                    }// end if                      
+                                }// end if
+                                if ("Yes".equalsIgnoreCase(input)) {
+                                    new main().FollowersToFile(Followers);
+                                    followerMenu = false;
+                                }// end if
+                            }// end while
+                        }// end if
+                    }// end if
+                }// end if
+                System.out.println();
+                System.out.println("Do you want to quit? Y/N");
+                input = Choice.next();
+                if ("Y".equalsIgnoreCase(input)) {
+                //this combinds the two arraylist in to one big.
+                    // function call to the close the program
+                    new main().userToFile(registeredUsers);
+                    new main().messageToFile(allMessages);
+                    menu = false;
+                }// end if
+            }// end if
+        }// end if
+    }//END MAIN
+
+    // all the methods load or write to a file.
         // This method will load all the users from a file and put them in to a list.
-    public ArrayList loadAllUsers() throws FileNotFoundException{
+    public ArrayList loadAllUsers() throws FileNotFoundException {
         ArrayList Users = new ArrayList();
         String UserName;
         String Password;
