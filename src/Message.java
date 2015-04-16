@@ -81,6 +81,12 @@ public class Message {
     }
     
     
+    @Override
+    public String toString(){
+        return Author + ": " + "\n" + Contents;
+        
+    }
+    
     // this is used for printing the info to a file
     public String toStringQuit(){
         return Author + " " +Privacy + " " + Contents;
