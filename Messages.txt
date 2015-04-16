@@ -1,10 +1,13 @@
-jtwhipple false I want the whole world to see this tweet
-jtwhipple true This tweet is a secret shhhh!
-jmoore false haha im james
-Kyle false bob saget quit hacking my account!
-jtwhipple false This is the alternate tweet
-noUname false TestingTestingTesting 
-Ktracy false Testing for realsies
-Ktracy false Testing privacy
-Ktracy true Testing for privacy round 2
-DragonSlayer false Whats up middle earth
+jtwhipple false    I want the whole world to see this tweet
+jtwhipple true    This tweet is a secret shhhh!
+jmoore false    haha im james
+Kyle false    bob saget quit hacking my account!
+jtwhipple false    This is the alternate tweet
+noUname false    TestingTestingTesting 
+Ktracy false    Testing for realsies
+Ktracy false    Testing privacy
+Ktracy true    Testing for privacy round 2
+DragonSlayer false    Whats up middle earth
+Ktracy false   Testing againsies
+Ktracy false  Yo it works
+GandalfGrey false You shall not pass

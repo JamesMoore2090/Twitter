@@ -29,10 +29,10 @@ public class Followers {
         User = user;
         follower = newFollower;
     }// end non default constructor
-   
-    public int compareTo(Followers other) {
-        return this.User.compareTo(other.User);
-    }// end method
+    
+    public String getUser(){
+        return User;
+    }
     
     /**
      * This prints the list of users then returns a new user to the main.
