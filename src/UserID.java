@@ -169,13 +169,20 @@ public class UserID {
     }
     
 
+    private String EncryptPass() throws Exception{
+        String enPass= AESCrypt.encrypt(Password);
+        return enPass;
+    }
+    
+    
     @Override
     public String toString() {
         return "UserID + " + UserName +" " +Password +" "+Name +" "+ Email +"\n";
     }// end method
     // this is used for printing the info to a file
-    public String toStringQuit(){
-        return UserName + " " + Password + " " + Name + " " + Email;
+    public String toStringQuit() throws Exception{
+        String newPass = EncryptPass();
+        return UserName + " " + Name + " " + Email + " " + newPass;
     }// end method
     
     
