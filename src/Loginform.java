@@ -54,6 +54,7 @@ public class Loginform extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jFrame1 = new javax.swing.JFrame();
         jFrame2 = new javax.swing.JFrame();
+        jScrollBar1 = new javax.swing.JScrollBar();
         password = new javax.swing.JPasswordField();
         username = new javax.swing.JTextField();
         loginButton = new javax.swing.JButton();
@@ -194,8 +195,6 @@ public class Loginform extends javax.swing.JFrame {
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel12.setText("After Signing in, click to go to menu!");
-
-        jLabel14.setIcon(new javax.swing.ImageIcon("C:\\Users\\Jameson\\Pictures\\Minion picture two.jpg")); // NOI18N
 
         jLabel13.setIcon(new javax.swing.ImageIcon(getClass().getResource("/minion bird tiny.png"))); // NOI18N
 
@@ -525,6 +524,7 @@ public class Loginform extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JScrollBar jScrollBar1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;

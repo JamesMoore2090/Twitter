@@ -39,12 +39,12 @@ public class main {
 
         //Choose to use gui or to use the console
         //COMPLETELY FOR DEBUGGING PURPOSES. DELETE AFTER FINAL COMMIT
-        System.out.println("WARNING: IF YOU CHOOSE TO USE GUI, IT IS BUGGY/ NOT FULLY FINISHED. USE THE CONSOLE UNTIL GUI IS COMPLETED. TEST YOUR CODE IN THE CONSOLE.");
-        System.out.println("Y/N for GUI: ");
+        //System.out.println("WARNING: IF YOU CHOOSE TO USE GUI, IT IS BUGGY/ NOT FULLY FINISHED. USE THE CONSOLE UNTIL GUI IS COMPLETED. TEST YOUR CODE IN THE CONSOLE.");
+        //System.out.println("Y/N for GUI: ");
 
-        Scanner scan = new Scanner(System.in);
-        String in;
-        in = scan.next();
+        //Scanner scan = new Scanner(System.in);
+        String in = "Y";
+        //in = scan.next();
         if (in.equalsIgnoreCase("Y")) {
             //instantiate gui, set visible
             Loginform login = new Loginform();
@@ -62,13 +62,13 @@ public class main {
             currentMessage= (Message) allMessages.get(i);
             boolean currentPrivacy= currentMessage.getPrivacy();
             if(currentPrivacy== false){
-                currentMessage.printMessage();
+               // currentMessage.printMessage();
             }
             i++;
         }
 
-        System.out.println("Welcome to Bottom Hehe");
-        System.out.println("Are you a new user? Y/N");
+        //System.out.println("Welcome to Bottom Hehe");
+        //System.out.println("Are you a new user? Y/N");
         input = Choice.next();
 
         while (menu) {
