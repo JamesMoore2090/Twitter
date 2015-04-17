@@ -180,14 +180,19 @@ public class main {
         String Password;
         String Name;
         String Email;
+        String enPass;
+        String dePass;
         FileReader F = new FileReader("Users.txt");
         try (Scanner S = new Scanner(F)) {
             while (S.hasNextLine()) {
                 UserName = S.next();
-                Password = S.next();
+                //Password = S.next();
+                
                 Name = S.next();
                 Email = S.next();
-                UserID user = new UserID(Name, UserName, Password, Email);
+                enPass = S.next();
+                dePass = AESCrypt.decrypt(enPass);
+                UserID user = new UserID(Name, UserName, dePass, Email);
                 Users.add(user);
             }
 

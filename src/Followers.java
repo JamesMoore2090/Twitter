@@ -41,6 +41,9 @@ public class Followers {
      * @param follows
      * @return 
      */
+    
+    //then use this to make and add the follower
+    //(username, registeredUsers, and who the user is following)
     public String newFollower(String User, ArrayList Users, ArrayList follows) {
         UserID followUser = new UserID();
         Scanner whoToFollow = new Scanner(System.in);
@@ -48,16 +51,21 @@ public class Followers {
         String foll;
         int a = 0; // counter control
         int c = 0; // counter control
+        ArrayList testingList = new ArrayList();
         while (a < Users.size()) {
             c = 0;
             followUser = (UserID) Users.get(a);
-            if (c < follows.size()) {
+            while (c < follows.size()) {
                 foll = (String) follows.get(c);
                 if ((!followUser.getUserName().equals(User) && (!followUser.getUserName().equals(foll)))) {
-                    System.out.println(followUser.UserName);
+                    testingList.add(followUser.UserName);
+                    if(follows.size() == testingList.size()){
+                        System.out.println(followUser.UserName);
+                    }   
                 }// end if
-                c++;
+                c++;   
             }// end if
+            testingList.clear();
             a++;
         }// end while
         System.out.println("Who would you like to follow?");
@@ -71,6 +79,8 @@ public class Followers {
      * @param follows
      * @return 
      */
+    
+    // run this to make a list first before making new follower
     public ArrayList getFollower(String userName, ArrayList follows) {
         Followers foundFollower = new Followers();
         ArrayList followerList = new ArrayList();
@@ -119,17 +129,21 @@ public class Followers {
         UserID ranUser = new UserID();
         ranUser = (UserID) user.get(ranNum); // gets random user
         // now test it to see if you are already following this person!
-        while (a < size) {
+        ArrayList testingList = new ArrayList();
+        while (a < user.size()) {
             c = 0;
             followUser = (UserID) user.get(a);
-            if (c < follows.size()) {
+            while (c < follows.size()) {
                 foll = (String) follows.get(c);
-                if ((!userName.equals(ranUser.getUserName()) && (!foll.equals(ranUser.getUserName())))) {
-                    // return if you get here
-                    return ranUser.getUserName();
+                if ((!followUser.getUserName().equals(userName) && (!followUser.getUserName().equals(foll)))) {
+                    testingList.add(followUser.UserName);
+                    if(follows.size() == testingList.size()){
+                        return ranUser.getUserName();
+                    }   
                 }// end if
-                c++;
+                c++;   
             }// end if
+            testingList.clear();
             a++;
         }// end while
         // else return null
