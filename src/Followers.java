@@ -29,12 +29,10 @@ public class Followers {
         User = user;
         follower = newFollower;
     }// end non default constructor
-   
+    
     public String getUser(){
         return User;
     }
-    
-    
     
     /**
      * This prints the list of users then returns a new user to the main.
@@ -43,6 +41,9 @@ public class Followers {
      * @param follows
      * @return 
      */
+    
+    //then use this to make and add the follower
+    //(username, registeredUsers, and who the user is following)
     public String newFollower(String User, ArrayList Users, ArrayList follows) {
         UserID followUser = new UserID();
         Scanner whoToFollow = new Scanner(System.in);
@@ -78,6 +79,8 @@ public class Followers {
      * @param follows
      * @return 
      */
+    
+    // run this to make a list first before making new follower
     public ArrayList getFollower(String userName, ArrayList follows) {
         Followers foundFollower = new Followers();
         ArrayList followerList = new ArrayList();

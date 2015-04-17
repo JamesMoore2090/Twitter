@@ -2,8 +2,10 @@
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -357,6 +359,7 @@ public class Loginform extends javax.swing.JFrame {
             char[] pwd = password.getPassword();
             String passw = new String(pwd);
             
+            
             //search through the list to see if this is in there
             UserID user = new UserID();
             UserID.currUser.setUserName(name);
@@ -543,5 +546,9 @@ public class Loginform extends javax.swing.JFrame {
     private javax.swing.JPasswordField password;
     private javax.swing.JTextField username;
     // End of variables declaration//GEN-END:variables
+
+
+
+
 }
 
