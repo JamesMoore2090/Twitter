@@ -81,6 +81,8 @@ public class main {
                 if(newUser.isRegisteredUser(registeredUsers)){
                     System.out.println("Would you like to compose a tweet? T: ");
                     System.out.println("See or add followers? F: ");
+                    System.out.println("View your timeline? V");
+                    System.out.println("Search tweets by hashtag? H");
                     input= Choice.next();
                     if("T".equalsIgnoreCase(input)){
                         //create new message and add it to list of Messages
@@ -156,8 +158,66 @@ public class main {
                                 }// end if
                             }// end while
                         }// end if
-                    }// end if
+                    
+                    if("V".equalsIgnoreCase(input)){
+                        int count=0;
+                        while(count< allMessages.size()){
+                            Message currentMessage= new Message();
+                            currentMessage= (Message) allMessages.get(count);
+                            String whosUser= newUser.getUserName();
+                            String testAuthor= "@".concat(whosUser);
+                            if((currentMessage.getContents()).contains(testAuthor)){ //print if @
+                                currentMessage.printMessage();
+                            }
+                            else{
+                                boolean currentPrivacy= currentMessage.getPrivacy(); //print public tweets
+                                if(currentPrivacy== false){
+                                currentMessage.printMessage();
+                                }
+                            }
+                        count++;
+                        }// end while for printing public tweets in timeline
+                        Followers = new main().loadFollowers();
+                        String currentUser = newUser.getUserName();
+                        Followers userSubscribers= new Followers();
+                        for (int a = 0; a < Followers.size(); a++) {
+                            userSubscribers = (Followers) Followers.get(a);
+                            String currentFollower= userSubscribers.whoAmIfollowing(currentUser);
+                            int j=0;
+                            while(j< allMessages.size()){
+                                Message currentMessage= new Message();
+                                currentMessage= (Message) allMessages.get(j);
+                                if(currentMessage.getPrivacy()){ // print private message from your followers
+                                    if((currentFollower != null) && (currentFollower.equals(currentMessage.getAuthor()))){ 
+                                        currentMessage.printMessage();
+                                    }// end if for print    
+                                }//end if
+                                j++;
+                            } //end while
+                        }// end for loop
+                         
+                    }// end if for view timeline
+                    
+                    if("H".equalsIgnoreCase(input)){
+                        System.out.println("Please enter the term you wish to search by, include # symbol");
+                        String searchTerm= Choice.next();
+                        int k=0;
+                        while(k< allMessages.size()){
+                        Message currentMessage= new Message();
+                        currentMessage= (Message) allMessages.get(k);
+                        String thisTweet= currentMessage.getContents();
+                        String words[]= thisTweet.split(" ");
+                            for(int index=0; index< words.length; index++){
+                                if(words[index].equals(searchTerm)){
+                                    currentMessage.printMessage();
+                                }// end if
+                            }//end for loop
+                        k++;    
+                        }//end while loop
+                    }//end if for hashtags
+                    
                 }// end if
+                }//close else
                 System.out.println();
                 System.out.println("Do you want to quit? Y/N");
                 input = Choice.next();
@@ -168,7 +228,7 @@ public class main {
                     new main().messageToFile(allMessages);
                     menu = false;
                 }// end if
-            }// end if
+            }// end while for menu
         
     }//END MAIN
 

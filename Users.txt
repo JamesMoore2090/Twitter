@@ -17,10 +17,3 @@ minionJerry Jerry minionJerry@gru.com 7nV1wQ7Q99lIAP/LkVCRRQ==
 minionTim Tim minionTim@gru.com +6gfnDxf8KXcvQgQq1dQ6A==
 minionPaul Paul minionPaul@gru.com pkQ0ngPiXM7kV3rn+IORzA==
 minionJohn John minionJohn@gru.com OIZO4u29B5IiVk4yaksUmg==
-minionFrank Frank Frank minionFrank@gru.com jo78tBcJKouGs6e8ct67ug==
-minionJoerge Joerge minionJoerge@gru.com nOvNqDCGKHCS+NphgySQHA==
-minionLance Lance minionLance@gru.com bR4H1Lc3ayfepdSwQvKSEg==
-minionMark Mark minionMark@gru.com 03J9/8u3QR7VxaQhnjwWCg==
-minionDonny Donny minionDonny@gru.com hiAk+F67qE0EimROBrGE0A==
-TheBossMan Gru TheBossMan@gru.com os2sFVbTN3wVYMJIE8lKcQ==
-Dr._Nefario Dr. Nefario qrpBhEbVaoAZqYUuYXC2BQ==
