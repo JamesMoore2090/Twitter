@@ -95,7 +95,7 @@ public class Followers {
             return follower;
         }// end if 
         else {
-            return "You have no followers";
+            return null;
         }// end else
     } // end method
 

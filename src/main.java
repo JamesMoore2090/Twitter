@@ -160,6 +160,23 @@ public class main {
                         }// end if
                     
                     if("V".equalsIgnoreCase(input)){
+                        int count=0;
+                        while(count< allMessages.size()){
+                            Message currentMessage= new Message();
+                            currentMessage= (Message) allMessages.get(count);
+                            String whosUser= newUser.getUserName();
+                            String testAuthor= "@".concat(whosUser);
+                            if((currentMessage.getContents()).contains(testAuthor)){ //print if @
+                                currentMessage.printMessage();
+                            }
+                            else{
+                                boolean currentPrivacy= currentMessage.getPrivacy(); //print public tweets
+                                if(currentPrivacy== false){
+                                currentMessage.printMessage();
+                                }
+                            }
+                        count++;
+                        }// end while for printing public tweets in timeline
                         Followers = new main().loadFollowers();
                         String currentUser = newUser.getUserName();
                         Followers userSubscribers= new Followers();
@@ -170,8 +187,10 @@ public class main {
                             while(j< allMessages.size()){
                                 Message currentMessage= new Message();
                                 currentMessage= (Message) allMessages.get(j);
-                                if(currentFollower.equals(currentMessage.getAuthor())){
-                                    currentMessage.printMessage();
+                                if(currentMessage.getPrivacy()){ // print private message from your followers
+                                    if((currentFollower != null) && (currentFollower.equals(currentMessage.getAuthor()))){ 
+                                        currentMessage.printMessage();
+                                    }// end if for print    
                                 }//end if
                                 j++;
                             } //end while
