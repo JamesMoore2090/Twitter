@@ -26,6 +26,7 @@ public class createTweetForm extends javax.swing.JFrame {
      */
     public createTweetForm() {
         initComponents();
+        getContentPane().setBackground(java.awt.Color.cyan);
     }
 
     /**
@@ -68,7 +69,7 @@ public class createTweetForm extends javax.swing.JFrame {
         });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel2.setText("Note: The tweet must be 160 characters or less");
+        jLabel2.setText("Note: The tweet must be 140 characters or less");
 
         jScrollPane1.setViewportView(contentTweet);
 
