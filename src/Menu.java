@@ -1,3 +1,11 @@
+
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.util.ArrayList;
+import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -158,7 +166,35 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_viewTweetsActionPerformed
 
     private void updateTweetsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_updateTweetsActionPerformed
+        //copy and create new file
         
+
+
+        //get all messages imported
+        ArrayList allMessages = new ArrayList();
+        
+        try {
+            allMessages = new main().loadAllMessages();
+            
+            //update the tweet with tweets from users
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        int i=0;
+        while(i< allMessages.size()){
+            Message currentMessage= new Message();
+            currentMessage= (Message) allMessages.get(i);
+            boolean currentPrivacy= currentMessage.getPrivacy();
+           if(currentPrivacy== false){
+               
+                displayTweets.append(currentMessage.toString() + "\n");
+                
+            }
+            i++;
+        }
+
         
     }//GEN-LAST:event_updateTweetsActionPerformed
 
@@ -212,4 +248,25 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JButton updateTweets;
     private javax.swing.JButton viewTweets;
     // End of variables declaration//GEN-END:variables
+
+    public ArrayList loadAllMessages() throws FileNotFoundException {
+        ArrayList Messages = new ArrayList();
+        String Author;
+        boolean Privacy;
+        String Contents;
+        FileReader F = new FileReader("Messages.txt");
+        try (Scanner S = new Scanner(F)) {
+            while (S.hasNextLine()) {
+                Author = S.next();
+                Privacy = S.nextBoolean();
+                Contents = S.nextLine();
+                Message tweet = new Message(Author, Privacy, Contents);
+                Messages.add(tweet);
+            }
+
+        }
+        return Messages;
+    }
+
+
 }
