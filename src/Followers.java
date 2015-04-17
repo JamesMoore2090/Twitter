@@ -72,6 +72,35 @@ public class Followers {
         input = whoToFollow.next();
         return input;
     }// end method
+    
+    public String newFollower(String User, ArrayList Users, ArrayList follows, String dataName) {
+        UserID followUser = new UserID();
+        Scanner whoToFollow = new Scanner(System.in);
+        String input;
+        String foll;
+        int a = 0; // counter control
+        int c = 0; // counter control
+        ArrayList testingList = new ArrayList();
+        while (a < Users.size()) {
+            c = 0;
+            followUser = (UserID) Users.get(a);
+            while (c < follows.size()) {
+                foll = (String) follows.get(c);
+                if ((!followUser.getUserName().equals(User) && (!followUser.getUserName().equals(foll)))) {
+                    testingList.add(followUser.UserName);
+                    if(follows.size() == testingList.size()){
+                        System.out.println(followUser.UserName);
+                    }   
+                }// end if
+                c++;   
+            }// end if
+            testingList.clear();
+            a++;
+        }// end while
+        //System.out.println("Who would you like to follow?");
+        dataName = whoToFollow.next();
+        return dataName;
+    }// end method
 
     /**
      * This creates an arrayList of the current users followers.
