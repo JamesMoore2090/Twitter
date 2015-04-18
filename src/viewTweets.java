@@ -3,6 +3,8 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -52,8 +54,8 @@ public class viewTweets extends javax.swing.JFrame {
         jTextArea1 = new javax.swing.JTextArea();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTextArea2 = new javax.swing.JTextArea();
-        jToggleButton1 = new javax.swing.JToggleButton();
+        displayTweets = new javax.swing.JTextArea();
+        getTweets = new javax.swing.JToggleButton();
         jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
@@ -123,14 +125,14 @@ public class viewTweets extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 36)); // NOI18N
         jLabel1.setText("View Private Tweets");
 
-        jTextArea2.setColumns(20);
-        jTextArea2.setRows(5);
-        jScrollPane3.setViewportView(jTextArea2);
+        displayTweets.setColumns(20);
+        displayTweets.setRows(5);
+        jScrollPane3.setViewportView(displayTweets);
 
-        jToggleButton1.setText("Update");
-        jToggleButton1.addActionListener(new java.awt.event.ActionListener() {
+        getTweets.setText("Update");
+        getTweets.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jToggleButton1ActionPerformed(evt);
+                getTweetsActionPerformed(evt);
             }
         });
 
@@ -164,7 +166,7 @@ public class viewTweets extends javax.swing.JFrame {
                                 .addGap(117, 117, 117))))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(32, 32, 32)
-                .addComponent(jToggleButton1)
+                .addComponent(getTweets)
                 .addGap(130, 130, 130))
         );
         layout.setVerticalGroup(
@@ -181,7 +183,7 @@ public class viewTweets extends javax.swing.JFrame {
                         .addComponent(jButton1))
                     .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 345, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jToggleButton1)
+                .addComponent(getTweets)
                 .addContainerGap(117, Short.MAX_VALUE))
         );
 
@@ -193,9 +195,49 @@ public class viewTweets extends javax.swing.JFrame {
         new Menu().setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void jToggleButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jToggleButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jToggleButton1ActionPerformed
+    private void getTweetsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_getTweetsActionPerformed
+        //make followers arraylist
+        ArrayList Followers = new ArrayList();
+        //load all messages 
+        
+        //get all messages imported
+        ArrayList allMessages = new ArrayList();
+        
+        try {
+            allMessages = new main().loadAllMessages();
+            
+            //update the tweet with tweets from users
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(Menu.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        
+        try {
+            Followers = new main().loadFollowers();
+        } catch (FileNotFoundException ex) {
+            Logger.getLogger(viewTweets.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        String currentUser = UserID.currUser.getUserName();
+        Followers userSubscribers= new Followers();
+        for (int a = 0; a < Followers.size(); a++) {
+            userSubscribers = (Followers) Followers.get(a);
+            String currentFollower= userSubscribers.whoAmIfollowing(currentUser);
+            int j=0;
+            while(j< allMessages.size()){
+                Message currentMessage= new Message();
+                currentMessage= (Message) allMessages.get(j);
+                if(currentMessage.getPrivacy()){ // print private message from your followers
+                    if((currentFollower != null) && (currentFollower.equals(currentMessage.getAuthor()))){ 
+                        //currentMessage.printMessage();
+                        displayTweets.append(currentMessage.toString() + "\n");
+                    }// end if for print    
+                }//end if
+                j++;
+            } //end while
+        }// end for loop
+        
+    }//GEN-LAST:event_getTweetsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -235,6 +277,8 @@ public class viewTweets extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private java.awt.Button button1;
     private java.awt.Button button2;
+    private javax.swing.JTextArea displayTweets;
+    private javax.swing.JToggleButton getTweets;
     private javax.swing.JButton jButton1;
     private javax.swing.JDialog jDialog1;
     private javax.swing.JInternalFrame jInternalFrame1;
@@ -248,8 +292,6 @@ public class viewTweets extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextArea jTextArea2;
-    private javax.swing.JToggleButton jToggleButton1;
     private javax.swing.JToolBar jToolBar1;
     private java.awt.Label label1;
     private java.awt.Menu menu1;

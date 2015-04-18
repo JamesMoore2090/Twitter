@@ -165,7 +165,7 @@ public class createTweetForm extends javax.swing.JFrame {
             //find state of privacy
             boolean flag = privacy.isSelected();
             if(flag==true){
-                System.out.println("True!!");
+                //System.out.println("True!!");
                        
             }
         //bring in all old messages
@@ -181,6 +181,10 @@ public class createTweetForm extends javax.swing.JFrame {
         //get what was in the text box
         String content = contentTweet.getText();
         
+        //if it was too big, tell them
+        if(content.length() > 140){
+            JOptionPane.showMessageDialog(null, "Your tweet must be below 140 characters. Please try again.", "Failure", JOptionPane.ERROR_MESSAGE);
+        }else{
         //add user post to array of all posts
         Message message = new Message(UserID.currUser.getUserName(), flag, content);
         
@@ -190,7 +194,7 @@ public class createTweetForm extends javax.swing.JFrame {
         
         //now send to file
         messageToFile(allMessages);
-        
+        }
         
         
         
