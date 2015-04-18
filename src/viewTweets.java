@@ -23,6 +23,7 @@ public class viewTweets extends javax.swing.JFrame {
      */
     public viewTweets() {
         initComponents();
+        getContentPane().setBackground(java.awt.Color.cyan);
     }
 
     /**

@@ -1,19 +1,22 @@
-jtwhipple false                 I want the whole world to see this tweet
-jtwhipple true                 This tweet is a secret shhhh!
-jmoore false                 haha im james
-Kyle false                 bob saget quit hacking my account!
-jtwhipple false                 This is the alternate tweet
-DragonSlayer false                 Whats up middle earth
-minionJerry false                There are bananas in the break room!
-minionJerry false               I need a vacation
-minionTim false              BANANAS!!!!
-TheBossMan false             Attention minions! There will be a meeting at 1pm this afternoons.
-jtwhipple true        Hey there @DragonSlayer hows it going?
-jtwhipple false       This is my first tweet in the new GUI how exciting
-jtwhipple true      Hey Dave are you able to see this tweet? @minionDave
-Ktracy false     Sunny day! #awesome #needsbeach
-Ktracy true    This is a secret @jtwhipple @DragonSlayer #test
-Ktracy true   Secret! muhaha
-Ktracy false   @jtwhipple what is going on man??? #rainy
-Ktracy false   wish it would stop raining #rainy
-jtwhipple false   so rainy outside #rainy
+jtwhipple false                    I want the whole world to see this tweet
+jtwhipple true                    This tweet is a secret shhhh!
+jmoore false                    haha im james
+Kyle false                    bob saget quit hacking my account!
+jtwhipple false                    This is the alternate tweet
+DragonSlayer false                    Whats up middle earth
+minionJerry false                   There are bananas in the break room!
+minionJerry false                  I need a vacation
+minionTim false                 BANANAS!!!!
+TheBossMan false                Attention minions! There will be a meeting at 1pm this afternoons.
+jtwhipple true           Hey there @DragonSlayer hows it going?
+jtwhipple false          This is my first tweet in the new GUI how exciting
+jtwhipple true         Hey Dave are you able to see this tweet? @minionDave
+Ktracy false        Sunny day! #awesome #needsbeach
+Ktracy true       This is a secret @jtwhipple @DragonSlayer #test
+Ktracy true      Secret! muhaha
+Ktracy false      @jtwhipple what is going on man??? #rainy
+Ktracy false      wish it would stop raining #rainy
+jtwhipple false      so rainy outside #rainy
+jtwhipple false   The login page looks great! @Ktracy
+jtwhipple true  Hey this is a secret tweet!
+jmoore true Shhhhh its a secret haha
